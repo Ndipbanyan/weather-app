@@ -4,9 +4,12 @@ import "./App.css";
 
 function App() {
   return (
-    <main className="App bg-red-600">
-      hi
-      <WeatherCard />
+    <main className="App  flex items-center md:w-8/12 bg-red-400  ">
+      <ul className="md:flex items-center">
+        <WeatherCard />
+        <WeatherCard />
+        <WeatherCard />
+      </ul>
     </main>
   );
 }

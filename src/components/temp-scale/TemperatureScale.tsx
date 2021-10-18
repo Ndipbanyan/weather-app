@@ -5,7 +5,7 @@ export default function TemperatureScale() {
         <div>
           <input type="radio" name="temp" value="celsius" className=" mr-2" />
           <label htmlFor="celsius" className=" mr-2">
-            Celsius
+            Celsius(°C)
           </label>
           <input
             type="radio"
@@ -13,7 +13,7 @@ export default function TemperatureScale() {
             value="fahrenheit"
             className=" mr-2"
           />
-          <label htmlFor="farenheit">Farenheit</label>
+          <label htmlFor="farenheit">Farenheit(°F)</label>
         </div>
         <div className="ml-6"></div>
       </form>

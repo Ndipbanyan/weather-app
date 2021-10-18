@@ -1,12 +1,38 @@
 import WeatherCard from "./components/weather-card/WeatherCard";
 import "./tailwind/output.css";
 import "./App.css";
+import {
+  tempFailure,
+  tempPending,
+  tempSuccess,
+} from "./redux/features/reducers/DayTempSLice";
 import BarChart from "./components/bar-chart/BarChart";
 import Previous from "./components/pagination/Previous";
 import Next from "./components/pagination/Next";
 import TemperatureScale from "./components/temp-scale/TemperatureScale";
+import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
+import { useEffect } from "react";
+import { AxiosResponse } from "axios";
+import { oneCallApi } from "./api/weatherApi";
 
 function App() {
+  const dispatch = useAppDispatch();
+  const temperature = () => async () => {
+    try {
+      dispatch(tempPending());
+      const dayTemp: AxiosResponse<any> = await oneCallApi();
+      if (dayTemp) {
+        dispatch(tempSuccess(dayTemp.data));
+      } else {
+        dispatch(tempFailure(dayTemp));
+      }
+    } catch (error) {
+      dispatch(tempFailure(error));
+    }
+  };
+  useEffect(() => {
+    temperature();
+  });
   return (
     <main className="App  h-screen w-screen flex flex-col items-center md:w-8/12 relative py-4">
       <div className=" absolute md:right-5">

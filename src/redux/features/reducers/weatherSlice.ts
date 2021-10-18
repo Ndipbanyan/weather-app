@@ -7,8 +7,8 @@ const initialState = {
   data: [],
 };
 
-const oneCallSlice = createSlice({
-  name: "dayTemperature",
+const weatherSlice = createSlice({
+  name: "weather",
   initialState,
   reducers: {
     tempPending: (state) => {
@@ -27,7 +27,7 @@ const oneCallSlice = createSlice({
   },
 });
 
-const { reducer, actions } = oneCallSlice;
+const { reducer, actions } = weatherSlice;
 export const { tempPending, tempSuccess, tempFailure } = actions;
 
 export default reducer;

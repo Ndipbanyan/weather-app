@@ -2,11 +2,12 @@ import {
   tempFailure,
   tempPending,
   tempSuccess,
-} from "../reducers/DayTempSLice";
+} from "../reducers/weatherSlice";
 
 import { weatherApi } from "../../../api/weatherApi";
 import { AppDispatch } from "../../store";
 import { AxiosResponse } from "axios";
+import groupBy from "lodash.groupby";
 
 export const temperature = () => async (dispatch: AppDispatch) => {
   try {

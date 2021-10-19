@@ -47,5 +47,6 @@ export const temperature = () => async (dispatch: AppDispatch) => {
     }
   } catch (error) {
     dispatch(tempFailure("Oops, something went Wrong..."));
+    console.log(error);
   }
 };

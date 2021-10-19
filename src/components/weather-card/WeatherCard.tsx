@@ -1,3 +1,5 @@
+import { useAppSelector } from "../../redux/hooks/hooks";
+
 export interface Prop {
   day: string;
   Avg_temp: number;
@@ -6,6 +8,7 @@ export interface Prop {
   icon: string;
 }
 const WeatherCard = ({ day, Avg_temp, description, icon }: Prop) => {
+  const { unit } = useAppSelector((state) => state.unit);
   return (
     <li className=" bg-gray-200 text-red-900  md:h-52 md:w-64 p-2 m-4 shadow-lg rounded-lg  ">
       <span className="block flex justify-center font-myFont mb-4">{day}</span>
@@ -13,7 +16,7 @@ const WeatherCard = ({ day, Avg_temp, description, icon }: Prop) => {
       <div className=" w-full flex  items-center justify-center text-5xl text-yellow-800 font-extra-black font-myFontBold">
         <span className="  ">
           {Avg_temp}
-          <span className=" ">°C</span>
+          <span className=" ">{unit === "celsius" ? "°C" : "°F"}</span>
         </span>
       </div>
       <div className="flex w-full items-center  ">

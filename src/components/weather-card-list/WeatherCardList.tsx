@@ -8,6 +8,7 @@ import WeatherCard from "../weather-card/WeatherCard";
 import { Prop } from "../weather-card/WeatherCard";
 const WeatherCardList = () => {
   const { data } = useAppSelector((state) => state.weather);
+  const { unit } = useAppSelector((state) => state.unit);
 
   const Page = data.slice(0, 3);
   const [startIndex, setStartIndex] = useState(3);
@@ -40,7 +41,7 @@ const WeatherCardList = () => {
     setCurrentTemp(data.slice(startIndex, endIndex));
   };
 
-  const value = "celsius";
+  console.log(unit);
   return (
     <>
       <div className={`${prevButton ? "" : "hidden"}`}>
@@ -54,7 +55,7 @@ const WeatherCardList = () => {
               key={idx}
               day={day}
               Avg_temp={
-                value === "celsius" ? kelvinToC(Avg_temp) : kelvinToF(Avg_temp)
+                unit === "celsius" ? kelvinToC(Avg_temp) : kelvinToF(Avg_temp)
               }
               description={description}
               icon={`${ICON_URL}${icon}@2x.png`}

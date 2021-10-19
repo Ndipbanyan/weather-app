@@ -5,41 +5,29 @@ import {
   HiOutlineArrowNarrowDown,
 } from "react-icons/hi";
 
-const WeatherCard = () => {
-  return (
-    // <IconContext.Provider
-    //   value={{ style: { verticalAlign: "middle", fontSize: "2rem" } }}
-    // >
-    <li className=" bg-gray-200 text-red-900  md:h-52 md:w-64 p-4 m-4 shadow-lg rounded-lg  ">
-      <div className="w-full flex  items-center ">
-        {" "}
-        <div className=" w-full flex  items-center justify-center w-20 h-24">
-          <span className="text-yellow-800 text-8xl font-extra-black font-myFontBold">
-            28
-          </span>
-          <div className="text-xs">
-            <span className="mb-4 text-yellow-600 text-2xl">°C</span>
-            <span className="flex items-center text-yellow-600">
-              <HiOutlineArrowNarrowUp />
-              <span className="text-red-900 mb-2 font-myFont">28°C</span>
-            </span>
-            <span className="flex items-center text-yellow-600">
-              <HiOutlineArrowNarrowDown />
-              <span className="text-red-900 text-xs font-myFont">28°C</span>
-            </span>
-          </div>
-        </div>
-      </div>
+export interface Prop {
+  day: string;
+  Avg_temp: number;
 
-      <div className=" flex w-full items-center justify-center my-4 ">
-        <span className=" block text-yellow-600 text-3xl ">
-          <BsCloudSun />
+  description: string;
+  icon: string;
+}
+const WeatherCard = ({ day, Avg_temp, description, icon }: Prop) => {
+  return (
+    <li className=" bg-gray-200 text-red-900  md:h-52 md:w-64 p-2 m-4 shadow-lg rounded-lg  ">
+      <span className="block flex justify-center font-myFont mb-4">{day}</span>
+
+      <div className=" w-full flex  items-center justify-center text-5xl text-yellow-800 font-extra-black font-myFontBold">
+        <span className="  ">
+          {Avg_temp}
+          <span className=" ">°C</span>
+          {/* <span className="text-2xl">(Average)</span> */}
         </span>
-        <span className=" block ml-4 mt-2">Broken Clouds</span>
       </div>
-      <span className="block mb-6 flex justify-center font-myFont">
-        Fri, October 14
-      </span>
+      <div className="flex w-full items-center  ">
+        <img src={icon} alt="day's weather" className="" />
+        <span className=" block ml-2 capitalize">{description}</span>
+      </div>
     </li>
     // </IconContext.Provider>
   );

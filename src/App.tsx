@@ -9,32 +9,16 @@ import TemperatureScale from "./components/temp-scale/TemperatureScale";
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
 import { useEffect } from "react";
 import { temperature } from "./redux/features/actions/tempAction";
+import WeatherCardList from "./components/weather-card-list/WeatherCardList";
 
 function App() {
   const dispatch = useAppDispatch();
+  const { status, isLoading } = useAppSelector((state) => state.weather);
 
   useEffect(() => {
     dispatch(temperature());
   }, []);
-  return (
-    <main className="App  h-screen w-screen flex flex-col items-center md:w-8/12 relative py-4">
-      <div className=" absolute md:right-5">
-        <TemperatureScale />
-      </div>
-      <div className="flex items-center mt-10">
-        <Previous />
-        <ul className="md:flex items-center">
-          <WeatherCard />
-          <WeatherCard />
-          <WeatherCard />
-        </ul>
-        <Next />
-      </div>
-      <div className="mt-5 mb-6 md:h-2/5 md:w-5/6  h-5/6 w-5/6">
-        <BarChart />
-      </div>
-    </main>
-  );
+  return <></>;
 }
 
 export default App;

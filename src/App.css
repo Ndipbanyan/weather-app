@@ -9,7 +9,7 @@ body {
 }
 #root {
   width: 100vw;
-
+  margin: auto;
   background-color: bisque;
   display: flex;
   align-items: center;

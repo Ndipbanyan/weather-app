@@ -15,28 +15,26 @@ export const temperature = () => async (dispatch: AppDispatch) => {
   dispatch(tempPending());
   try {
     const response: AxiosResponse<any> = await weatherApi();
-    if (response.status === 200) {
+    if (response) {
       const result = groupBy(response.data.list, monthName);
 
       const data = [];
       for (const date in result) {
         let sum = 0;
-        let sumTempHigh = 0;
-        let sumTempLow = 0;
+
         let time = [];
 
         for (let i = 0; i < result[date].length; i++) {
           sum += result[date][i].main.temp;
-          sumTempHigh = result[date][i].main.temp_max;
-          sumTempLow = result[date][i].main.temp_min;
+
           let timearr = result[date][i].dt;
           time.push(timeFromTimestamp(timearr));
         }
         const obj = {
           day: date,
           Avg_temp: Math.floor(sum / result[date].length),
-          avg_temp_min: Math.floor(sumTempLow / result[date].length),
-          avg_temp_max: Math.floor(sumTempHigh / result[date].length),
+          description: result[date][0].weather[0].description,
+          icon: result[date][0].weather[0].icon,
           hours: time,
         };
 

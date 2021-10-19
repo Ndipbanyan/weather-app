@@ -9,15 +9,12 @@ export const dateFromTimestamp = (timestamp: number) => {
   const date = new Date(timestamp * 1000);
   return moment(date).format("ddd, MMMM DD");
 };
-
 // Get time from Unix timestamp
 export const timeFromTimestamp = (timestamp: number) => {
   const date = new Date(timestamp * 1000);
   return moment(date).format("HH:MM");
 };
 
-export const monthName = (item: any) => {
+export const monthName = (item: { dt: number }) => {
   return dateFromTimestamp(item.dt);
 };
-
-// export const result = groupBy(data, monthName);

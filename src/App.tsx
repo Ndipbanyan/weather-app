@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch(temperature());
-  });
+  }, []);
   return (
     <main className="App  h-screen w-screen flex flex-col items-center md:w-8/12 relative py-4">
       <div className=" absolute md:right-5">

@@ -23,6 +23,7 @@ const weatherSlice = createSlice({
     tempFailure: (state, { payload }) => {
       state.isLoading = false;
       state.status = "failed";
+      state.data = payload;
     },
   },
 });

@@ -1,8 +1,8 @@
 import moment from "moment";
 
-export const kelvinToC = (kelvin: number) => Math.round(kelvin - 273);
+export const kelvinToC = (kelvin: number) => Math.floor(kelvin - 273);
 export const kelvinToF = (kelvin: number) =>
-  Math.round(((kelvin - 273.15) * 9) / 5 + 32);
+  Math.floor(((kelvin - 273.15) * 9) / 5 + 32);
 
 // Get date from Unix timestamp
 export const dateFromTimestamp = (timestamp: number) => {

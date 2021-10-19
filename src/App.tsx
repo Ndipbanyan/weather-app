@@ -1,24 +1,31 @@
-import WeatherCard from "./components/weather-card/WeatherCard";
 import "./tailwind/output.css";
 import "./App.css";
-
-import BarChart from "./components/bar-chart/BarChart";
-import Previous from "./components/pagination/Previous";
-import Next from "./components/pagination/Next";
-import TemperatureScale from "./components/temp-scale/TemperatureScale";
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { temperature } from "./redux/features/actions/tempAction";
-import WeatherCardList from "./components/weather-card-list/WeatherCardList";
+import Loading from "./components/loading/Loading";
+import WeatherApp from "./components/weather-app/WeatherApp";
+import ErrorOccured from "./components/error/Error";
 
 function App() {
   const dispatch = useAppDispatch();
-  const { status, isLoading } = useAppSelector((state) => state.weather);
+  const { status } = useAppSelector((state) => state.weather);
 
   useEffect(() => {
     dispatch(temperature());
   }, []);
-  return <></>;
+  const renderContent = (): JSX.Element => {
+    if (status === "loading") return <Loading />;
+    if (status === "success") return <WeatherApp />;
+    if (status === "failed") return <ErrorOccured />;
+
+    return <></>;
+  };
+  return (
+    <main className="App  h-screen w-screen flex flex-col items-center  md:w-8/12 relative pb-10 px-4">
+      {renderContent()}
+    </main>
+  );
 }
 
 export default App;

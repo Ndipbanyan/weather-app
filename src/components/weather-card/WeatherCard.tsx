@@ -1,10 +1,3 @@
-import React from "react";
-import { BsCloudSun } from "react-icons/bs";
-import {
-  HiOutlineArrowNarrowUp,
-  HiOutlineArrowNarrowDown,
-} from "react-icons/hi";
-
 export interface Prop {
   day: string;
   Avg_temp: number;
@@ -21,7 +14,6 @@ const WeatherCard = ({ day, Avg_temp, description, icon }: Prop) => {
         <span className="  ">
           {Avg_temp}
           <span className=" ">°C</span>
-          {/* <span className="text-2xl">(Average)</span> */}
         </span>
       </div>
       <div className="flex w-full items-center  ">
@@ -29,7 +21,6 @@ const WeatherCard = ({ day, Avg_temp, description, icon }: Prop) => {
         <span className=" block ml-2 capitalize">{description}</span>
       </div>
     </li>
-    // </IconContext.Provider>
   );
 };
 

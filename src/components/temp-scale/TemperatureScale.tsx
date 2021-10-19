@@ -1,18 +1,16 @@
+import { useState } from "react";
+
 export default function TemperatureScale() {
+  const [unit, setUnit] = useState("celsius");
   return (
-    <div className="  w-96 flex  items-center justify-between">
+    <div className=" w-full flex  items-center justify-between mt-4">
       <form className="flex">
         <div>
           <input type="radio" name="temp" value="celsius" className=" mr-2" />
-          <label htmlFor="celsius" className=" mr-2">
+          <label htmlFor={unit} className=" mr-2">
             Celsius(°C)
           </label>
-          <input
-            type="radio"
-            name="temp"
-            value="fahrenheit"
-            className=" mr-2"
-          />
+          <input type="radio" name="temp" value="farenheit" className=" mr-2" />
           <label htmlFor="farenheit">Farenheit(°F)</label>
         </div>
         <div className="ml-6"></div>

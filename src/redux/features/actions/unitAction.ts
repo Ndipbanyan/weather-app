@@ -1,6 +1,6 @@
 import { AppDispatch } from "../../store";
-import { setUnit } from "../reducers/unit.slice";
+import { setUnit } from "../reducers/unitSlice";
 
-export const temperature = (unit: string) => async (dispatch: AppDispatch) => {
+export const tempUnit = (unit: string) => async (dispatch: AppDispatch) => {
   dispatch(setUnit(unit));
 };

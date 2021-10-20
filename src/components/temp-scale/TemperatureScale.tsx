@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
 import { temperature } from "../../redux/features/actions/tempAction";
-import { setUnit } from "../../redux/features/reducers/unit.slice";
+import { tempUnit } from "../../redux/features/actions/unitAction";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 
 export default function TemperatureScale() {
   const dispatch = useAppDispatch();
-  const [unitType, setUnitType] = useState("");
+  const [unitType, setUnitType] = useState("celsius");
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const valueType = e.target.value;
+    setUnitType(valueType);
+    dispatch(tempUnit(valueType));
+  };
 
   return (
-    <div className=" w-full flex  items-center justify-between mt-4">
+    <div className=" w-full flex  items-center justify-between text-yellow-800 font-myFontBold font-extra-black  ">
       <form className="flex">
         <div>
           <input
             type="radio"
             name="temp"
             value="celsius"
-            className=" mr-2"
-            onChange={(e) => {
-              setUnitType(e.target.value);
-              dispatch(setUnit(unitType));
-            }}
+            className=" mr-2 "
+            onChange={handleChange}
           />
           <label htmlFor="celsius" className=" mr-2">
             Celsius(°C)
@@ -29,10 +31,7 @@ export default function TemperatureScale() {
             name="temp"
             value="farenheit"
             className=" mr-2"
-            onChange={(e) => {
-              setUnitType(e.target.value);
-              dispatch(setUnit(unitType));
-            }}
+            onChange={handleChange}
           />
           <label htmlFor="farenheit">Farenheit(°F)</label>
         </div>
@@ -40,7 +39,7 @@ export default function TemperatureScale() {
       </form>
 
       <button
-        className="bg-gray-200 p-2  shadow-lg rounded-lg"
+        className="bg-gray-200 p-2  shadow-lg rounded-lg mr-14"
         onClick={() => dispatch(temperature())}
       >
         Refresh

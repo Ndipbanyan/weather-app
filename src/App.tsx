@@ -22,7 +22,7 @@ function App() {
     return <></>;
   };
   return (
-    <main className="App  h-screen w-screen flex flex-col items-center justify-center md:w-8/12 relative pb-10 px-4">
+    <main className="App  h-screen w-screen flex flex-col items-center justify-center md:w-8/12 relative pb-10 ">
       {renderContent()}
     </main>
   );

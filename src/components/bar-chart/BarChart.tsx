@@ -3,35 +3,20 @@ import { useAppSelector } from "../../redux/hooks/hooks";
 import { kelvinToC, kelvinToF } from "../../utilities/helpers";
 
 const BarChart = () => {
-  const { data } = useAppSelector((state) => state.weather);
-  let info: any = data;
+  const { activeCard } = useAppSelector((state) => state.activeCard);
+  const { unit } = useAppSelector((state) => state.unit);
 
-  const Xaxis = info[4].hours;
-  const Yaxis = info[4].hourlytemp.map((item: number) => kelvinToC(item));
-  console.log(Xaxis);
-  const barBackgroundColors = [
-    "rgba(255, 99, 132, 0.2)",
-    "rgba(54, 162, 235, 0.2)",
-    "rgba(255, 206, 86, 0.2)",
-    "rgba(75, 192, 192, 0.2)",
-    "rgba(153, 102, 255, 0.2)",
-    "rgba(255, 159, 64, 0.2)",
-  ];
-  const barBorderColors = [
-    "rgba(255, 99, 132, 0.2)",
-    "rgba(54, 162, 235, 0.2)",
-    "rgba(255, 206, 86, 0.2)",
-    "rgba(75, 192, 192, 0.2)",
-    "rgba(153, 102, 255, 0.2)",
-    "rgba(255, 159, 64, 0.2)",
-  ];
-  let i = 0;
+  const Xaxis = activeCard.hours;
+  const Yaxis =
+    unit === "celsius"
+      ? activeCard.hourlytemp.map((item: number) => kelvinToC(item))
+      : activeCard.hourlytemp.map((item: number) => kelvinToF(item));
 
   const bardata = {
     labels: Xaxis,
     datasets: [
       {
-        label: "Temperature",
+        label: `${activeCard.day}`,
         data: Yaxis,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
@@ -66,12 +51,11 @@ const BarChart = () => {
     },
   };
   return (
-    <>
-      <div className="header">
-        <h1 className="title">Temperature</h1>
-      </div>
+    <div className="header text-yellow-800 font-myFontBold">
+      <h1 className="title">Temperature Statistics</h1>
+
       <Bar data={bardata} options={options} />
-    </>
+    </div>
   );
 };
 

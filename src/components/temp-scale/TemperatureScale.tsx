@@ -39,7 +39,8 @@ export default function TemperatureScale() {
       </form>
 
       <button
-        className="bg-gray-200 p-2  shadow-lg rounded-lg mr-14"
+        className="bg-gray-200 p-2  shadow-lg rounded-lg mr-14 md:transform hover:-translate-y-1 
+      hover:scale-105 transition duration-500 ease-in-out"
         onClick={() => dispatch(temperature())}
       >
         Refresh

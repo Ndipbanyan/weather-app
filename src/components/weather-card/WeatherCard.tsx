@@ -11,7 +11,9 @@ const WeatherCard = ({ day, Avg_temp, description, icon, onClick }: Prop) => {
   const { unit } = useAppSelector((state) => state.unit);
   return (
     <li
-      className=" bg-gray-200 text-red-900  md:h-52 md:w-64 p-2 m-4 shadow-lg rounded-lg"
+      className=" bg-gray-200 text-red-900   md:h-52 
+      md:w-64 p-2 m-4 shadow-lg rounded-lg md:transform hover:-translate-y-1 
+      hover:scale-105 transition duration-500 ease-in-out"
       onClick={onClick}
     >
       <span className="block flex justify-center font-myFont mb-4">{day}</span>

@@ -56,7 +56,7 @@ const WeatherCardList = () => {
       </div>
       <ul className="md:flex items-center">
         {currentTemp.map((temp: itemProp, idx: number) => {
-          const { day, description, Avg_temp, icon, hourlytemp, hours } = temp;
+          const { day, description, Avg_temp, icon } = temp;
           return (
             <WeatherCard
               key={idx}

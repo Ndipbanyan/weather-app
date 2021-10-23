@@ -12,7 +12,7 @@ export const dateFromTimestamp = (timestamp: number) => {
 // Get time from Unix timestamp
 export const timeFromTimestamp = (timestamp: number) => {
   const date = new Date(timestamp * 1000);
-  return moment(date).format("HH:MM");
+  return moment(date).format("HH:mm A");
 };
 
 export const monthName = (item: { dt: number }) => {

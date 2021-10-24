@@ -22,7 +22,11 @@ function App() {
     return <></>;
   };
   return (
-    <main className="App  h-screen w-screen flex flex-col items-center justify-center md:w-8/12 relative pb-10 ">
+    <main
+      className={`h-screen w-screen flex flex-col items-center ${
+        status === "loading" || status === "failed" ? "justify-center" : ""
+      } `}
+    >
       {renderContent()}
     </main>
   );

@@ -4,17 +4,21 @@ import WeatherCardList from "../weather-card-list/WeatherCardList";
 
 const WeatherApp = () => {
   return (
-    <>
-      <div className="w-full flex items-center justify-center  ">
+    <section className=" w-4/5 h-screen flex text-red-900 flex-col items-center ">
+      <h1 className=" font-myfontBold text-5xl mt-2 flex items-center justify-center">
+        Weather App
+      </h1>
+      <div className="w-full  flex items-center">
         <TemperatureScale />
       </div>
-      <div className="flex  items-center">
+      <p>Showing Weather information for Lagos, Nigeria</p>
+      <div className=" w-full flex  items-center">
         <WeatherCardList />
       </div>
-      <div className="mt-5 mb-6 md:h-2/5 md:w-5/6  h-5/6 w-5/6">
+      <div className=" w-full  mt-2   flex items-center justify-center">
         <BarChart />
       </div>
-    </>
+    </section>
   );
 };
 

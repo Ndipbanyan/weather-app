@@ -33,7 +33,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "tailwindBuild": "tailwind build src/tailwind/input.css -o src/tailwind/output.css",
+    "tailwindBuild": "tailwind build -i src/tailwind/input.css -o src/tailwind/output.css",
     "start": "yarn tailwindBuild && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

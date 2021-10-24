@@ -23,7 +23,7 @@ export default function TemperatureScale() {
             className=" mr-2 "
             onChange={handleChange}
           />
-          <label htmlFor="celsius" className=" mr-2">
+          <label htmlFor="celsius" className=" mr-4">
             Celsius(°C)
           </label>
           <input
@@ -39,7 +39,7 @@ export default function TemperatureScale() {
       </form>
 
       <button
-        className="bg-gray-200 p-2  shadow-lg rounded-lg mr-14 md:transform hover:-translate-y-1 
+        className="bg-gray-200 p-2  shadow-lg rounded-lg  md:transform hover:-translate-y-1 
       hover:scale-105 transition duration-500 ease-in-out"
         onClick={() => dispatch(temperature())}
       >

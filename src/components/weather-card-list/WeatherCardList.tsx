@@ -6,19 +6,21 @@ import { kelvinToC, kelvinToF } from "../../utilities/helpers";
 import Next from "../pagination/Next";
 import Previous from "../pagination/Previous";
 import WeatherCard from "../weather-card/WeatherCard";
+
+interface itemProp {
+  day: string;
+  Avg_temp: number;
+  description: string;
+  icon: string;
+  hours: [];
+  hourlytemp: [];
+}
+
 const WeatherCardList = () => {
-  interface itemProp {
-    day: string;
-    Avg_temp: number;
-    description: string;
-    icon: string;
-    hours: [];
-    hourlytemp: [];
-  }
   const { data } = useAppSelector((state) => state.weather);
   const { unit } = useAppSelector((state) => state.unit);
   const dispatch = useAppDispatch();
-
+  dispatch(setData(data[0]));
   const Page = data.slice(0, 3);
   const [startIndex, setStartIndex] = useState(3);
   const [endIndex, setEndIndex] = useState(6);
@@ -50,11 +52,13 @@ const WeatherCardList = () => {
     setCurrentTemp(data.slice(startIndex, endIndex));
   };
   return (
-    <>
-      <div className={`${prevButton ? "" : "hidden"}`}>
-        <Previous onClick={previous} />
+    <section className="w-full flex items-center justify-between">
+      <div className="w-20 ">
+        <span className={prevButton ? "" : "hidden"}>
+          <Previous onClick={previous} />
+        </span>
       </div>
-      <ul className="md:flex items-center">
+      <ul className="w-11/12  flex items-center justify-between">
         {currentTemp.map((temp: itemProp, idx: number) => {
           const { day, description, Avg_temp, icon } = temp;
           return (
@@ -71,10 +75,12 @@ const WeatherCardList = () => {
           );
         })}
       </ul>
-      <div className={`${nextButton ? "" : "hidden"}`}>
-        <Next onClick={next} />
+      <div className="w-20">
+        <span className={`${nextButton ? "" : "hidden"}`}>
+          <Next onClick={next} />
+        </span>
       </div>
-    </>
+    </section>
   );
 };
 

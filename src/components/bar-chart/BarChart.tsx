@@ -6,6 +6,12 @@ const BarChart = () => {
   const { activeCard } = useAppSelector((state) => state.activeCard);
   const { unit } = useAppSelector((state) => state.unit);
 
+  // const xaxes = activeCard.hours;
+
+  // while (xaxes.length < 8) {
+  //   xaxes.
+  // }
+
   const Xaxis = activeCard.hours;
   const Yaxis =
     unit === "celsius"
@@ -51,7 +57,7 @@ const BarChart = () => {
     },
   };
   return (
-    <div className="header text-yellow-800 font-myFontBold">
+    <div className=" md:w-2/3  text-yellow-800 font-myFontBold ">
       <h1 className="title">Temperature Statistics</h1>
 
       <Bar data={bardata} options={options} />

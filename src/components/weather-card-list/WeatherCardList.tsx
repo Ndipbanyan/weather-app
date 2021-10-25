@@ -1,4 +1,8 @@
-import { useState } from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import "./style.css";
+import { useEffect, useState } from "react";
 import { setData } from "../../redux/features/actions/activeCardAction";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { ICON_URL } from "../../utilities/Constants";
@@ -21,45 +25,39 @@ const WeatherCardList = () => {
   const { unit } = useAppSelector((state) => state.unit);
   const dispatch = useAppDispatch();
   dispatch(setData(data[0]));
-  const Page = data.slice(0, 3);
-  const [startIndex, setStartIndex] = useState(3);
-  const [endIndex, setEndIndex] = useState(6);
-  const [currentTemp, setCurrentTemp] = useState(Page);
-  const [nextButton, setNextButton] = useState(true);
-  const [prevButton, setPrevButton] = useState(false);
-  const next = () => {
-    setPrevButton(true);
-    if (endIndex >= data.length) {
-      setNextButton(false);
-      setStartIndex(startIndex - 3);
-      setEndIndex(endIndex - 3);
-    } else {
-      setStartIndex(startIndex + 3);
-      setEndIndex(endIndex + 3);
-    }
-    setCurrentTemp(data.slice(startIndex, endIndex));
+
+  const [isMobile, setIsMobile] = useState(() => {
+    return window.innerWidth < 600 ? true : false;
+  });
+
+  const SetDevice = () => {
+    window.innerWidth < 600 ? setIsMobile(true) : setIsMobile(false);
   };
-  const previous = () => {
-    setNextButton(true);
-    if (startIndex <= 0) {
-      setStartIndex(startIndex + 3);
-      setEndIndex(endIndex + 3);
-      setPrevButton(false);
-    } else {
-      setStartIndex(startIndex - 3);
-      setEndIndex(endIndex - 3);
-    }
-    setCurrentTemp(data.slice(startIndex, endIndex));
+
+  useEffect(() => {
+    window.addEventListener("resize", SetDevice);
+    return () => window.removeEventListener("resize", SetDevice);
+  }, []);
+
+  var settings = {
+    dots: false,
+    autoplay: false,
+    speed: 400,
+    infinite: false,
+    nextArrow: (
+      <span className="bg-red-400">
+        <Next />
+      </span>
+    ),
+    prevArrow: <Previous />,
+    slidesToShow: isMobile ? 1 : 3,
+    slidesToScroll: isMobile ? 1 : 3,
   };
+
   return (
-    <section className="w-full flex items-center justify-between">
-      <div className="w-20 ">
-        <span className={prevButton ? "" : "hidden"}>
-          <Previous onClick={previous} />
-        </span>
-      </div>
-      <ul className="w-11/12  flex items-center justify-between">
-        {currentTemp.map((temp: itemProp, idx: number) => {
+    <section className="">
+      <Slider {...settings} className="relative px-8 ">
+        {data.map((temp: itemProp, idx: number) => {
           const { day, description, Avg_temp, icon } = temp;
           return (
             <WeatherCard
@@ -74,12 +72,7 @@ const WeatherCardList = () => {
             />
           );
         })}
-      </ul>
-      <div className="w-20">
-        <span className={`${nextButton ? "" : "hidden"}`}>
-          <Next onClick={next} />
-        </span>
-      </div>
+      </Slider>
     </section>
   );
 };

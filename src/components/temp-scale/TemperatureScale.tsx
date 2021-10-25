@@ -13,29 +13,28 @@ export default function TemperatureScale() {
   };
 
   return (
-    <div className=" w-full flex  items-center justify-between text-yellow-800 font-myFontBold font-extra-black  ">
-      <form className="flex">
-        <div>
-          <input
-            type="radio"
-            name="temp"
-            value="celsius"
-            className=" mr-2 "
-            onChange={handleChange}
-          />
-          <label htmlFor="celsius" className=" mr-4">
-            Celsius(°C)
-          </label>
-          <input
-            type="radio"
-            name="temp"
-            value="farenheit"
-            className=" mr-2"
-            onChange={handleChange}
-          />
-          <label htmlFor="farenheit">Farenheit(°F)</label>
-        </div>
-        <div className="ml-6"></div>
+    <div className=" w-full flex   items-center justify-between text-yellow-800 font-myFontBold font-extra-black  ">
+      <form className="flex items-center justify-between  w-1/3 md:w-52">
+        <input
+          type="radio"
+          name="temp"
+          value="celsius"
+          checked={unitType === "celsius"}
+          onChange={handleChange}
+        />
+        <label htmlFor="celsius" className="flex mr-4">
+          <span className=" hidden md:flex ">Celsius </span>(°C)
+        </label>
+        <input
+          type="radio"
+          name="temp"
+          value="farenheit"
+          className=" "
+          onChange={handleChange}
+        />
+        <label htmlFor="farenheit" className="flex">
+          <span className=" hidden md:flex">Farenheit</span> (°F)
+        </label>
       </form>
 
       <button

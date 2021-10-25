@@ -1,0 +1,8 @@
+.slick-disabled {
+  display: none !important;
+}
+
+.slick-next::before,
+.slick-prev::before {
+  content: none;
+}

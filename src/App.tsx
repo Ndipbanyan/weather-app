@@ -1,5 +1,6 @@
 import "./tailwind/output.css";
 import "./App.css";
+
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
 import { useEffect, useState } from "react";
 import { temperature } from "./redux/features/actions/tempAction";

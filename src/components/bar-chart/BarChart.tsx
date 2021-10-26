@@ -7,10 +7,12 @@ const BarChart = () => {
   const { activeCard } = useAppSelector((state) => state.activeCard);
   const { unit } = useAppSelector((state) => state.unit);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+  const [isMobile, setIsMobile] = useState(() => {
+    return window.innerWidth < 600 ? true : false;
+  });
 
   const SetDevice = () => {
-    setIsMobile(window.innerWidth <= 600);
+    window.innerWidth < 600 ? setIsMobile(true) : setIsMobile(false);
   };
 
   useEffect(() => {

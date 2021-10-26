@@ -36,6 +36,8 @@
     "tailwindBuild": "tailwind build -i src/tailwind/input.css -o src/tailwind/output.css",
     "start": "yarn tailwindBuild && react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "coverage": "yarn test -- --coverage",
     "eject": "react-scripts eject"

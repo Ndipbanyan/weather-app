@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { useAppSelector } from "../../redux/hooks/hooks";
 import { tempUnitConverter } from "../../utilities/helpers";
@@ -5,6 +6,19 @@ import { tempUnitConverter } from "../../utilities/helpers";
 const BarChart = () => {
   const { activeCard } = useAppSelector((state) => state.activeCard);
   const { unit } = useAppSelector((state) => state.unit);
+
+  const [isMobile, setIsMobile] = useState(() => {
+    return window.innerWidth < 600 ? true : false;
+  });
+
+  const SetDevice = () => {
+    window.innerWidth < 600 ? setIsMobile(true) : setIsMobile(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", SetDevice);
+    return () => window.removeEventListener("resize", SetDevice);
+  }, []);
 
   const Xaxis = activeCard.hours;
   const Yaxis = activeCard.hourlytemp.map((item: number) =>
@@ -50,10 +64,10 @@ const BarChart = () => {
     },
   };
   return (
-    <div className=" md:w-2/3  text-yellow-800 font-myFontBold ">
+    <div className=" md:w-2/3   text-yellow-800 font-myFontBold relative h-full ">
       <h1 className="title">Temperature Statistics</h1>
 
-      <Bar data={bardata} options={options} />
+      <Bar data={bardata} height={isMobile ? 250 : 150} options={options} />
     </div>
   );
 };

@@ -4,8 +4,8 @@ import WeatherCardList from "../weather-card-list/WeatherCardList";
 
 const WeatherApp = () => {
   return (
-    <section className=" md:w-4/5 md:px-0 px-2 w-full h-screen flex text-red-900 flex-col items-center ">
-      <h1 className=" font-myfontBold text-3xl md:text-5xl mt-4 md:mt-2 flex items-center justify-center">
+    <section className=" md:w-4/5 md:px-0 md:px-2 px-4 w-full h-screen flex text-red-900 flex-col items-center ">
+      <h1 className=" font-myfontBold text-3xl md:text-5xl mt-4 md:mt-4 flex items-center justify-center">
         Sky Up Weather
       </h1>
       <p className="md:my-2 my-4 text-center">
@@ -18,7 +18,7 @@ const WeatherApp = () => {
       <div className=" w-full  ">
         <WeatherCardList />
       </div>
-      <div className=" md:w-full mt-6 md:mt-2   flex items-center justify-center">
+      <div className=" md:w-full mt-6 md:mt-2 h-auto  flex items-center justify-center">
         <BarChart />
       </div>
     </section>

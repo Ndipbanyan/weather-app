@@ -17,6 +17,7 @@
     "autoprefixer": "^10.3.7",
     "axios": "^0.23.0",
     "chart.js": "^3.5.1",
+    "gh-pages": "^3.2.3",
     "lodash.groupby": "^4.6.0",
     "moment": "^2.29.1",
     "postcss": "^8.3.9",

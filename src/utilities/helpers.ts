@@ -1,8 +1,12 @@
 import moment from "moment";
+import { TemperatureUnit } from "./Constants";
 
-export const kelvinToC = (kelvin: number) => Math.floor(kelvin - 273);
-export const kelvinToF = (kelvin: number) =>
-  Math.floor(((kelvin - 273.15) * 9) / 5 + 32);
+export const tempUnitConverter = (kelvin: number, unit: string) => {
+  if (unit === TemperatureUnit.CELSIUS) {
+    return Math.floor(kelvin - 273);
+  }
+  return Math.floor(((kelvin - 273.15) * 9) / 5 + 32);
+};
 
 // Get date from Unix timestamp
 export const dateFromTimestamp = (timestamp: number) => {

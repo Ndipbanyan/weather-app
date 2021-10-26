@@ -2,8 +2,8 @@ import "./tailwind/output.css";
 import "./App.css";
 
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
-import { useEffect, useState } from "react";
-import { temperature } from "./redux/features/actions/tempAction";
+import { useEffect } from "react";
+import { fetchTemperatureData } from "./redux/features/actions/tempAction";
 import Loading from "./components/loading/Loading";
 import WeatherApp from "./components/weather-app/WeatherApp";
 import ErrorOccured from "./components/error/Error";
@@ -13,7 +13,7 @@ function App() {
   const { status } = useAppSelector((state) => state.weather);
 
   useEffect(() => {
-    dispatch(temperature());
+    dispatch(fetchTemperatureData());
   }, []);
   const renderContent = (): JSX.Element => {
     if (status === "loading") return <Loading />;

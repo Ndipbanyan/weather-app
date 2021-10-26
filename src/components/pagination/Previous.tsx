@@ -1,7 +1,5 @@
 import { FaArrowAltCircleLeft } from "react-icons/fa";
-interface Prop {
-  onClick: () => void;
-}
+
 const Previous = (props: any) => {
   const { style, onClick } = props;
   return (

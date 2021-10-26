@@ -11,7 +11,7 @@ import groupBy from "lodash.groupby";
 import { monthName, timeFromTimestamp } from "../../../utilities/helpers";
 import { AxiosResponse } from "axios";
 
-export const temperature = () => async (dispatch: AppDispatch) => {
+export const fetchTemperatureData = () => async (dispatch: AppDispatch) => {
   dispatch(tempPending());
   try {
     const response: AxiosResponse<any> = await weatherApi();

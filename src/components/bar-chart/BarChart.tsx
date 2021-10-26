@@ -1,22 +1,15 @@
 import { Bar } from "react-chartjs-2";
 import { useAppSelector } from "../../redux/hooks/hooks";
-import { kelvinToC, kelvinToF } from "../../utilities/helpers";
+import { tempUnitConverter } from "../../utilities/helpers";
 
 const BarChart = () => {
   const { activeCard } = useAppSelector((state) => state.activeCard);
   const { unit } = useAppSelector((state) => state.unit);
 
-  // const xaxes = activeCard.hours;
-
-  // while (xaxes.length < 8) {
-  //   xaxes.
-  // }
-
   const Xaxis = activeCard.hours;
-  const Yaxis =
-    unit === "celsius"
-      ? activeCard.hourlytemp.map((item: number) => kelvinToC(item))
-      : activeCard.hourlytemp.map((item: number) => kelvinToF(item));
+  const Yaxis = activeCard.hourlytemp.map((item: number) =>
+    tempUnitConverter(item, unit)
+  );
 
   const bardata = {
     labels: Xaxis,

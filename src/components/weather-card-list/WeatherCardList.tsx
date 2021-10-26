@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { setData } from "../../redux/features/actions/activeCardAction";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { ICON_URL } from "../../utilities/Constants";
-import { kelvinToC, kelvinToF } from "../../utilities/helpers";
+import { tempUnitConverter } from "../../utilities/helpers";
 import Next from "../pagination/Next";
 import Previous from "../pagination/Previous";
 import WeatherCard from "../weather-card/WeatherCard";
@@ -63,9 +63,7 @@ const WeatherCardList = () => {
             <WeatherCard
               key={idx}
               day={day}
-              Avg_temp={
-                unit === "celsius" ? kelvinToC(Avg_temp) : kelvinToF(Avg_temp)
-              }
+              Avg_temp={tempUnitConverter(Avg_temp, unit)}
               description={description}
               icon={`${ICON_URL}${icon}@2x.png`}
               onClick={() => dispatch(setData(temp))}

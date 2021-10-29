@@ -24,7 +24,7 @@ export default function TemperatureScale() {
           onChange={handleChange}
         />
         <label htmlFor="celsius" className="flex mr-4 ml-1">
-          <span className=" hidden md:flex ">Celsius </span>(°C)
+          <span className=" hidden md:flex mr-1">Celsius</span>(°C)
         </label>
         <input
           type="radio"
@@ -33,8 +33,8 @@ export default function TemperatureScale() {
           className=" "
           onChange={handleChange}
         />
-        <label htmlFor="farenheit" className="flex ml-1">
-          <span className=" hidden md:flex">Farenheit</span> (°F)
+        <label htmlFor="fahrenheit" className="flex ml-1">
+          <span className=" hidden md:flex mr-1">Fahrenheit</span> (°F)
         </label>
       </form>
 

@@ -9,9 +9,10 @@ const BarChart = () => {
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
-  const SetDevice = () => setIsMobile(window.innerWidth <= 600);
-
   useEffect(() => {
+    const SetDevice = () => {
+      setIsMobile(window.innerWidth <= 600);
+    };
     window.addEventListener("resize", SetDevice);
     return () => window.removeEventListener("resize", SetDevice);
   }, []);
@@ -62,8 +63,7 @@ const BarChart = () => {
   return (
     <div className=" md:w-2/3   text-yellow-800 font-myFontBold relative h-full ">
       <h1 className="title">Temperature Statistics</h1>
-
-      <Bar data={bardata} height={isMobile ? 250 : 150} options={options} />
+      {<Bar data={bardata} height={isMobile ? 250 : 150} options={options} />}
     </div>
   );
 };

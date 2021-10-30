@@ -21,8 +21,8 @@ export const fetchTemperatureData = () => async (dispatch: AppDispatch) => {
       const data: {}[] = [];
       for (const date in result) {
         let sum = 0;
-        let time = [];
-        let hourtemp = [];
+        let time: string[] = [];
+        let hourtemp: number[] = [];
 
         for (let i = 0; i < result[date].length; i++) {
           sum += result[date][i].main.temp;

@@ -6,11 +6,10 @@ import {
 } from "../utilities/test-utils";
 
 import App from "../App";
-import { handlers } from "./handlers";
 import axios from "axios";
 import { rest } from "msw";
 
-const server = setupServer(...handlers);
+const server = setupServer();
 
 beforeAll(() => server.listen({ onUnhandledRequest: "bypass" }));
 afterEach(() => server.resetHandlers());

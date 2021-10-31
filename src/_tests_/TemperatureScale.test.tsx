@@ -6,5 +6,7 @@ test("should render the temperature component ", async () => {
 
   fireEvent.click(screen.getByRole("button"));
 
-  expect(screen.getByText(/celsius/i)).toBeInTheDocument();
+  expect(screen.getByText("Celsius")).toBeInTheDocument();
+  expect(screen.getByText("Fahrenheit")).toBeInTheDocument();
+  expect(screen.getByText("Refresh")).toBeInTheDocument();
 });

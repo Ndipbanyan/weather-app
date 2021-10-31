@@ -5,6 +5,4 @@ test("should render the weatherCard component ", async () => {
   render(<WeatherCardList />);
 
   expect(screen.queryByTestId("card")).toBeInTheDocument();
-
-  expect(await screen.queryByTestId("card")).toBeInTheDocument();
 });

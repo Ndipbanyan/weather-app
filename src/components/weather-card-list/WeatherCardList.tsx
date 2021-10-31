@@ -27,14 +27,9 @@ const WeatherCardList = () => {
   dispatch(setData(data[0]));
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
-
+  const SetDevice = () => setIsMobile(window.innerWidth <= 600);
   useEffect(() => {
-    const SetDevice = () => setIsMobile(window.innerWidth <= 600);
-
     window.addEventListener("resize", SetDevice);
-
-    SetDevice();
-
     return () => window.removeEventListener("resize", SetDevice);
   }, []);
 

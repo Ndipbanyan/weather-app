@@ -1,6 +1,6 @@
 import { GiTerror } from "react-icons/gi";
 
-const ErrorOccured = () => {
+const ErrorOccurred = () => {
   return (
     <div
       data-testid="error"
@@ -12,4 +12,4 @@ const ErrorOccured = () => {
   );
 };
 
-export default ErrorOccured;
+export default ErrorOccurred;

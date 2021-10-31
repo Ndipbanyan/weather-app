@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { fetchTemperatureData } from "./redux/features/actions/tempAction";
 import Loading from "./components/loading/Loading";
 import WeatherApp from "./components/weather-app/WeatherApp";
-import ErrorOccured from "./components/error/Error";
+import ErrorOccurred from "./components/error/Error";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -16,17 +16,19 @@ function App() {
     dispatch(fetchTemperatureData());
   }, []);
   const renderContent = (): JSX.Element => {
-    if (status === "loading") return <Loading />;
-    if (status === "success") return <WeatherApp />;
-    if (status === "failed") return <ErrorOccured />;
-
-    return <></>;
+    return status === "loading" ? (
+      <Loading />
+    ) : status === "success" ? (
+      <WeatherApp />
+    ) : (
+      <ErrorOccurred />
+    );
   };
   return (
     <main
       data-testid="weather-app"
       className={`h-screen w-screen flex flex-col items-center ${
-        status === "loading" || status === "failed" ? "justify-center" : ""
+        status !== "success" ? "justify-center" : ""
       } `}
     >
       {renderContent()}

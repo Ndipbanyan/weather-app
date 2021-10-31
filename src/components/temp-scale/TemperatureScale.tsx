@@ -39,6 +39,9 @@ export default function TemperatureScale() {
       </form>
 
       <button
+        type="button"
+        role="button"
+        data-testid="refresh"
         className="bg-gray-200 p-2  shadow-lg rounded-lg  md:transform hover:-translate-y-1 
       hover:scale-105 transition duration-500 ease-in-out"
         onClick={() => dispatch(fetchTemperatureData())}

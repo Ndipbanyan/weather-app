@@ -54,7 +54,7 @@ const WeatherCardList = () => {
   };
 
   return (
-    <section className="">
+    <section data-testid="card" className="">
       <Slider {...settings} className="relative px-8 ">
         {data.map((temp: itemProp, idx: number) => {
           const { day, description, Avg_temp, icon } = temp;

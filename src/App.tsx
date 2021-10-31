@@ -24,6 +24,7 @@ function App() {
   };
   return (
     <main
+      data-testid="weather-app"
       className={`h-screen w-screen flex flex-col items-center ${
         status === "loading" || status === "failed" ? "justify-center" : ""
       } `}

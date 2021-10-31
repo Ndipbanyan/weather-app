@@ -61,7 +61,10 @@ const BarChart = () => {
     },
   };
   return (
-    <div className=" md:w-2/3   text-yellow-800 font-myFontBold relative h-full ">
+    <div
+      data-testid="barchart"
+      className=" md:w-2/3   text-yellow-800 font-myFontBold relative h-full "
+    >
       <h1 className="title">Temperature Statistics</h1>
       {<Bar data={bardata} height={isMobile ? 250 : 150} options={options} />}
     </div>

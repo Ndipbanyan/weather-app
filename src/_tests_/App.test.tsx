@@ -1,27 +1,18 @@
-import { rest } from "msw";
-
 import { setupServer } from "msw/node";
 import {
   render,
   screen,
   waitForElementToBeRemoved,
-  waitFor,
-} from "././utilities/test-utils";
-import App from "./App";
-const apiKey = process.env.REACT_APP_API_KEY || "";
-const server = setupServer(
-  rest.get(
-    "https://api.openweathermap.org/data/2.5/forecast",
-    (req, res, ctx) => {
-      const query = req.url.searchParams;
-      const q = query.get("lagos");
-      const appid = query.get(apiKey);
-      return res(ctx.status(200));
-    }
-  )
-);
+} from "../utilities/test-utils";
 
-beforeAll(() => server.listen());
+import App from "../App";
+import { handlers } from "./handlers";
+import axios from "axios";
+import { rest } from "msw";
+
+const server = setupServer(...handlers);
+
+beforeAll(() => server.listen({ onUnhandledRequest: "bypass" }));
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 describe("App", () => {
@@ -30,9 +21,6 @@ describe("App", () => {
       rest.get(
         "https://api.openweathermap.org/data/2.5/forecast",
         (req, res, ctx) => {
-          const query = req.url.searchParams;
-          const q = query.get("lagos");
-          const appid = query.get(apiKey);
           return res(ctx.status(500));
         }
       )
@@ -49,15 +37,20 @@ describe("App", () => {
       rest.get(
         "https://api.openweathermap.org/data/2.5/forecast",
         (req, res, ctx) => {
-          const query = req.url.searchParams;
-          const q = query.get("lagos");
-          const appid = query.get(apiKey);
-          return res(ctx.status(201));
+          return res(ctx.status(202));
         }
       )
     );
     render(<App />);
 
     expect(screen.getByTestId("loading")).toBeInTheDocument();
+  });
+
+  test("should render the App", async () => {
+    const getSpy = jest.spyOn(axios, "get");
+
+    render(<App />);
+    expect(getSpy).toBeCalledTimes(1);
+    expect(await screen.getByTestId("weather-app")).toBeInTheDocument();
   });
 });

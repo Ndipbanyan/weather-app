@@ -4,10 +4,7 @@ import WeatherCardList from "../weather-card-list/WeatherCardList";
 
 const WeatherApp = () => {
   return (
-    <section
-      data-testid="weather-app"
-      className=" md:w-4/5 md:px-0 md:px-2 px-4 w-full h-screen flex text-red-900 flex-col items-center "
-    >
+    <section className=" md:w-4/5 md:px-0 md:px-2 px-4 w-full h-screen flex text-red-900 flex-col items-center ">
       <h1 className=" font-myfontBold text-3xl md:text-5xl mt-4 md:mt-4 flex items-center justify-center">
         Sky Up Weather
       </h1>

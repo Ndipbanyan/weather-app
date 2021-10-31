@@ -52,5 +52,6 @@ $ yarn deploy
 
 ## Preview
 
-<img width="1440" alt="Screenshot 2021-10-29 at 21 52 50" src="https://user-images.githubusercontent.com/67186679/139500431-5bbe16d7-c1f8-4069-b503-f87e71173da2.png">
+<img width="1440" alt="Screenshot 2021-10-31 at 15 45 57" src="https://user-images.githubusercontent.com/67186679/139589123-78967706-7e61-4846-a624-bdb7e73d6ff5.png">
+
 

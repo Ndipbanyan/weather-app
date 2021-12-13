@@ -10,6 +10,7 @@ import groupBy from "lodash.groupby";
 
 import { monthName, timeFromTimestamp } from "../../../utilities/helpers";
 import { AxiosResponse } from "axios";
+import { setData } from "./activeCardAction";
 
 export const fetchTemperatureData = () => async (dispatch: AppDispatch) => {
   dispatch(tempPending());
@@ -19,6 +20,7 @@ export const fetchTemperatureData = () => async (dispatch: AppDispatch) => {
       const result = groupBy(response.data.list, monthName);
 
       const data: {}[] = [];
+      let index=0
       for (const date in result) {
         let sum = 0;
         let time: string[] = [];
@@ -31,7 +33,8 @@ export const fetchTemperatureData = () => async (dispatch: AppDispatch) => {
           hourtemp.push(result[date][i].main.temp);
         }
         const obj = {
-          id: result[date][0].dt,
+          id:index,
+          key: result[date][0].dt,
           day: date,
           Avg_temp: Math.floor(sum / result[date].length),
           description: result[date][0].weather[0].description,
@@ -41,8 +44,9 @@ export const fetchTemperatureData = () => async (dispatch: AppDispatch) => {
         };
 
         data.push(obj);
+        index++
       }
-
+      // dispatch(setData(data[0]))
       dispatch(tempSuccess(data));
     }
   } catch (error) {

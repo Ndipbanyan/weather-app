@@ -21,6 +21,8 @@ interface itemProp {
 }
 
 const WeatherCardList = () => {
+  const [selected, setSelected] = useState(0)
+  
   const { data } = useAppSelector((state) => state.weather);
   const { unit } = useAppSelector((state) => state.unit);
   const dispatch = useAppDispatch();
@@ -59,8 +61,12 @@ const WeatherCardList = () => {
               day={day}
               Avg_temp={tempUnitConverter(Avg_temp, unit)}
               description={description}
+              isSelected={selected===idx}
               icon={`${ICON_URL}${icon}@2x.png`}
-              onClick={() => dispatch(setData(temp))}
+              onClick={() => {
+                setSelected(idx)
+                dispatch(setData(temp))
+              }}
             />
           );
         })}

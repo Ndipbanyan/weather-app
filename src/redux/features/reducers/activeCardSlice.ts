@@ -3,7 +3,8 @@ const initialState = {
   error: false,
   status: "",
   activeCard: {
-    id: 0,
+    id:0,
+    key: 0,
     day: "",
     Avg_temp: 0,
     description: "",
@@ -11,6 +12,7 @@ const initialState = {
     hourlytemp: [],
     hours: [],
   },
+  selectedCard:0
 };
 const ActiveCardSlice = createSlice({
   name: "activeCard",

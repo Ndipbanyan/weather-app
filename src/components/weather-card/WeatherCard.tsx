@@ -1,19 +1,20 @@
 import { useAppSelector } from "../../redux/hooks/hooks";
-
+import "./index.css"
 export interface Prop {
   day: string;
   Avg_temp: number;
   description: string;
   icon: string;
+  isSelected: boolean;
   onClick: () => void;
 }
-const WeatherCard = ({ day, Avg_temp, description, icon, onClick }: Prop) => {
+const WeatherCard = ({ day, Avg_temp, description, icon, isSelected,onClick }: Prop) => {
   const { unit } = useAppSelector((state) => state.unit);
   return (
     <li
-      className=" bg-gray-200 text-red-900   md:h-52  mx-2 pt-2 md:pt-0
-      md:w-64 my-4 md:my-3 md:mx-auto shadow-lg rounded-lg md:transform hover:-translate-y-1 
-      hover:scale-105 transition duration-500 ease-in-out list-none "
+      className={` ${isSelected? "bg-red-500":"bg-gray-200"} card-hover  text-red-900 md:h-52 mx-2 pt-2 md:pt-0
+      md:w-64 my-4 md:my-3 md:mx-auto shadow-lg rounded-lg md:transform hover:-translate-y-1
+      hover:scale-105 transition duration-500 ease-in-out list-none` }
       onClick={onClick}
     >
       <span className="block flex justify-center font-myFont mb-4">{day}</span>

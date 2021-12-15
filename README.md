@@ -4,6 +4,8 @@
 
 This is a weather app that shows weather information for a total five days/40 3-hour periods for Lagos, Nigeria.
 ## More to come
+
+- City Selection:User should be able to select a city from a dropdown menu to see that city's weather information
 - Responsiveness: Current implementation is only responsive for desktop and mobile views and doesn't account for tablet or any screen sizes in between.
 - More thorough unit and integration tests.
 

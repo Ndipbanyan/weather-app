@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../redux/hooks/hooks";
-import "./index.css"
+
 export interface Prop {
   day: string;
   Avg_temp: number;
